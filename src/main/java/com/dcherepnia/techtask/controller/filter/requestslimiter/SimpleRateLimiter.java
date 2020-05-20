@@ -7,9 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 public class SimpleRateLimiter {
 
-    private Semaphore semaphore;
-    private int maxPermits;
-    private TimeUnit timePeriod;
+    private final Semaphore semaphore;
+    private final int maxPermits;
+    private final TimeUnit timePeriod;
     private ScheduledExecutorService scheduler;
 
     public static SimpleRateLimiter create(int permits, TimeUnit timePeriod) {

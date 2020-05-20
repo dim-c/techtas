@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import java.io.IOException;
 
-public class LoanSerializer extends StdSerializer<Loan> {
+class LoanSerializer extends StdSerializer<Loan> {
 
     public LoanSerializer() {
         this(null);

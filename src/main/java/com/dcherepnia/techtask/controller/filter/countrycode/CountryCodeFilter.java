@@ -27,10 +27,10 @@ public class CountryCodeFilter implements Filter {
     private static final String LOCAL_HOST_ADRESS = "127.0.0.1";
     private final String LOCAL_NAT_ADDRESS = "0:0:0:0:0:0:0:1";
     public static final String DEFAULT_COUNTRY_CODE = "LV";
-    public static final String IP_SERVER_ADDRESS = "http://ip-api.com/json/";
-    private RestTemplate restTemplate;
+    private static final String IP_SERVER_ADDRESS = "http://ip-api.com/json/";
+    private final RestTemplate restTemplate;
 
-    private static ConcurrentHashMap<String, String> countryCache = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<String, String> countryCache = new ConcurrentHashMap<>();
 
     public CountryCodeFilter(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -85,17 +85,17 @@ public class CountryCodeFilter implements Filter {
         clearCache();
     }
 
-    public static class HeaderMapRequestWrapper extends HttpServletRequestWrapper {
+    static class HeaderMapRequestWrapper extends HttpServletRequestWrapper {
         /**
          * construct a wrapper for this request
          *
          * @param request
          */
-        public HeaderMapRequestWrapper(HttpServletRequest request) {
+        HeaderMapRequestWrapper(HttpServletRequest request) {
             super(request);
         }
 
-        private Map<String, String> headerMap = new HashMap<>();
+        private final Map<String, String> headerMap = new HashMap<>();
 
         /**
          * add a header with given name and value
@@ -103,7 +103,7 @@ public class CountryCodeFilter implements Filter {
          * @param name
          * @param value
          */
-        public void addHeader(String name, String value) {
+        void addHeader(String name, String value) {
             headerMap.put(name, value);
         }
 

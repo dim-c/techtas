@@ -170,7 +170,6 @@ class TechtaskApplicationTests {
                 .andExpect(jsonPath("$", hasSize(loansCount)));
     }
 
-
     private void makeLoanRequestWithDtoAndCheckStatus(long customerId, ResultMatcher matcher) throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post(LOANS_URL)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -178,7 +177,6 @@ class TechtaskApplicationTests {
                         new LoanDto(BigDecimal.ONE, LocalDateTime.now())))))
                 .andExpect(matcher);
     }
-
 
     private static String asJsonString(final Object obj) {
         try {

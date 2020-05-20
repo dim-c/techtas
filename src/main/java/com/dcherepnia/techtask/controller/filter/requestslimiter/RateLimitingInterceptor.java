@@ -26,7 +26,7 @@ public class RateLimitingInterceptor extends HandlerInterceptorAdapter {
     @Value("${rate.limit.rate.limit.per.second}")
     private int permits;
 
-    private Map<String, SimpleRateLimiter> limiters = new ConcurrentHashMap<>();
+    private final Map<String, SimpleRateLimiter> limiters = new ConcurrentHashMap<>();
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
