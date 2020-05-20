@@ -1,4 +1,4 @@
-# techtas
+# Techtask
 **It's a Spring Boot Application and can be run using java -jar**
 ## API:
 ### /loans GET:
